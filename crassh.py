@@ -292,12 +292,12 @@ def readauthfile(filepath):
 
     if File_OK:
         cp = configparser.SafeConfigParser()
-        crasshrc = cp.read(filepath)
+        cp.read(filepath)
         if cp.has_section("crassh"):
             if cp.has_option("crassh", username):
-                username = parser.get("crassh", 'username').strip()
+                username = cp.get("crassh", 'username').strip()
             if cp.has_option("crassh", password):
-                password = parser.get("crassh", 'password').strip()
+                password = cp.get("crassh", 'password').strip()
             return username, password
         else:
             print("Cannot find crassh section in %s " & filepath)
